@@ -4,6 +4,8 @@ Spring Aspect Oriented Programming and Transaction Management
 Spring AOP
 ----------
 Spring Aspect Oriented Programming (AOP) provided solution of cross-cutting concern.
+<p>The major advantage is here you actually splitted aspect and actual target so our aspect functionality does not impact on actual business logic class.</p>
+<p>The aspect is configured in spring xml class so whenever client does not want any aspect we can easily removed.</p>
 
 <p>Cross-cutting problem:</p>
 <ul>
