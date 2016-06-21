@@ -57,3 +57,48 @@ Spring Aspect Oriented Programming (AOP) provided solution of cross-cutting conc
 			private void inTrading(){}
 	</li>
 </ul>
+
+<hr>
+<b>following are the advices:</b><br>
+	
+		public void logBefore(){
+		}
+		
+		public void logAfter(){
+		}
+
+<b>Following are the Joinpoints in examples:</b><br>
+
+
+			public double getBalance(){
+
+				return balance;
+			}
+
+			public void transfer(long creditAc,long debitAcc){
+
+			}
+
+			public boolean isValidCard(long cardno){
+				return false;
+			}
+			
+<b>following is one of the pointcut:</b> <br>
+
+			public double getBalance(){
+
+				return balance;
+			}
+<b>following is the target object:</b><br>
+
+			BankImpl.class
+
+			
+<b>following are the aspect:</b><br>
+
+		public void logBefore(){
+		}
+		
+		public double getBalance(){
+				return balance;
+		}
