@@ -118,3 +118,83 @@ Spring Aspect Oriented Programming (AOP) provided solution of cross-cutting conc
 	   		<aop:before pointcut-ref="logBeforePointcut" method="logBeforeWithPointcutInfo"/>
 	   	</aop:aspect>
 	 </aop:config>
+
+<b>Spring AOP AspectJ Pointcut Expressions With Examples:</b>
+<hr>
+
+<ol>
+	<li><b>Matching Method Signature Patterns:</b>
+	<ul>
+	<li>Matching all methods within a class in another package:<br>
+		For example, the following pointcut expression matches all of the methods declared in the IBank interface. <br>
+		The preceding wildcard matches methods with any modifier (public, protected, and private) and any return type. <br>
+		The two dots in the argument list match any number of arguments.<br><br></li>
+
+		<b>execution(* org.springaopexamples.target.IBank.*(..)) </b> </i>
+
+	<li>Matching all methods within a class within same package:<br>
+	 You can omit the package name if the target class or interface is located in the same package as this aspect..<br><br>
+	  <b>execution(* IBank.*(..))</b> 
+	</li>
+	<li>Matching all public methods in IBank:<br>
+	 Use public keyword in start, and use * to match any return type.<br><br>
+	  <b>execution(public * IBank.*(..))</b> 
+	</li>
+	<li>Matching all public methods in IBank with return type BankDto:<br>
+	 Use public keyword and return type in start.<br><br>
+	  <b>execution(public BankDto IBank.*(..))</b> 
+	</li>
+	<li>Matching all public methods in IBank with return type BankDto and first parameter as BankDto:<br>
+	 Use public keyword and return type in start. Also, specify your first parameter as well. Rest parameters can be matched through two dots.<br><br>
+	  <b>execution(public BankDto IBank.*(BankDto, ..))</b> 
+	</li>
+	<li>Matching all public methods in IBank with return type BankDto and definite parameters:<br>
+	 Use public keyword and return type in start. Also, specify all parameter types as well.<br><br>
+	  <b>execution(public BankDto IBank.*(BankDto, Integer))</b> 
+	</li>
+	</ul>
+	</li>
+	
+	<li><b>Matching Type Signature Patterns:</b>
+	<ul>
+	<li>Matching all methods defined in classes inside package com.springaopexamples.aop:<br>
+	It’s much like previous example. <br><br>
+	  <b>within(com.springaopexamples.aop.*)</b> 
+	</li>
+	<li>Matching all methods defined in classes inside package com.springaopexamples.aop and classes inside all sub-packages as well:<br>
+	 For including, sub-packages use two dots.<br><br>
+	  <b>within(com.springaopexamples.aop..*)</b> 
+	</li>
+	<li>Match all methods with a class in another package:<br>
+	 Much like previous example using execution keyword.<br><br>
+	  <b>within(com.springaopexamples.target.BankImpl)</b> 
+	</li>
+	<li>Match all methods with a class in same package:<br>
+	 in case of same package, drop package name.<br><br>
+	  <b>within(BankImpl)</b> 
+	</li>
+	<li>Match all methods within all all implementing classes of IBank interface:<br>
+	 Use + (plus) sign to match all implementations of an interface.<br><br>
+	  <b>within(BankImpl+)</b> 
+	</li>
+	</ul>
+	</li>
+	
+	<li><b>Matching Bean Name Patterns:</b>
+	<ul>
+	<li>Match all methods defined in beans whose name ends with ‘Manager’:<br>
+	 It’s quite easy one. Use an * to match anything preceding in bean name and then matching word.<br><br>
+	  <b>bean(*Manager)</b> 
+	</li>
+	</ul>
+	</li>
+	
+	<li><b>Combining Pointcut Expressions:</b>
+	<ul>
+	<li>Match all methods with names ending with Manager and DAO:<br>
+	Use ‘||’ sign to combine both expressions. <br><br>
+	  <b>bean(*Manager) || bean(*DAO)</b> 
+	</li>
+	</ul>
+	</li>
+</ol>
