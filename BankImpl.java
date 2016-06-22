@@ -11,8 +11,8 @@ public class BankImpl implements IBank {
 	}
 
 	@Override
-	public void transfer(long creditAcountNo, long debitAccountNo) {
-		System.out.println("you transfer from account "+creditAcountNo+" to account "+debitAccountNo);
+	public void transfer(long creditAcountNo, long debitAccountNo,double amount) {
+		System.out.println("you transfered amount "+amount+" from account "+creditAcountNo+" to account "+debitAccountNo);
 	}
 
 	@Override
@@ -21,4 +21,9 @@ public class BankImpl implements IBank {
 		return false;
 	}
 
+	@Override
+	public void deposit(long accountno, double amount) {
+		
+		System.out.println("deposited amount:"+amount+" to the account:"+accountno);
+	}
 }
