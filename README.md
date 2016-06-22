@@ -107,3 +107,14 @@ Spring Aspect Oriented Programming (AOP) provided solution of cross-cutting conc
 		public double getBalance(){
 				return balance;
 		}
+<hr>
+<b>Spring aop configuration</b><br>
+
+	<aop:config>
+	   	<aop:aspect ref="loggingAspect">
+	   		<aop:pointcut expression="execution(* org.springaopexamples.target.BankImpl.getBalance(*))" id="logBeforePointcut"/>
+	   		<aop:before pointcut-ref="logBeforePointcut" method="logBefore"/>
+	   		<aop:after pointcut-ref="logBeforePointcut" method="logAfter"/>
+	   		<aop:before pointcut-ref="logBeforePointcut" method="logBeforeWithPointcutInfo"/>
+	   	</aop:aspect>
+	 </aop:config>
