@@ -10,5 +10,9 @@ public class LoggingAspect {
 	public void logAfter(){
 		System.out.println("Hi I am inside logAfter method");
 	}
+	
+	public void logBeforeWithPointcutInfo(JoinPoint joinpoint){
+		System.out.println("Calling..["+joinpoint.getTarget().getClass()+"]:["+joinpoint.getSignature()+"]");
+	}
 
 }
