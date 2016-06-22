@@ -58,6 +58,9 @@ Spring Aspect Oriented Programming (AOP) provided solution of cross-cutting conc
 		@Pointcut("within(com.xyz.service.trading..*)")
 			private void inTrading(){}
 	</li>
+	<li>
+		aop:pointcut expression="execution(* org.springaopexamples.target.BankImpl.getBalance(*))" id="logBeforePointcut"
+	</li>
 </ul>
 
 <hr>
