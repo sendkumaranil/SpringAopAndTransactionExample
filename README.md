@@ -1,5 +1,5 @@
-# SpringAopAndTransactionExample
-Spring Aspect Oriented Programming and Transaction Management
+# SpringAopExample
+Spring Aspect Oriented Programming
 <hr>
 Spring AOP
 ----------
