@@ -10,12 +10,20 @@
    <!-- bean definition & AOP specific configuration -->
    <bean id="myBank" class="org.springaopexamples.target.BankImpl"></bean>
    <bean id="loggingAspect" class="org.springaopexamples.aop.LoggingAspect"></bean>
+   <bean id="transactionAspect" class="org.springaopexamples.aop.TransactionAspect"></bean>
    
-   <aop:config>
-   	<aop:aspect ref="loggingAspect">
+   <aop:aspect ref="loggingAspect">
    		<aop:pointcut expression="execution(* org.springaopexamples.target.BankImpl.getBalance(*))" id="logBeforePointcut"/>
    		<aop:before pointcut-ref="logBeforePointcut" method="logBefore"/>
+   		<aop:after pointcut-ref="logBeforePointcut" method="logAfter"/>
+   		<aop:before pointcut-ref="logBeforePointcut" method="logBeforeWithPointcutInfo"/>
    	</aop:aspect>
-   </aop:config>
+	   	
+   	<aop:aspect ref="transactionAspect">
+   		<aop:pointcut expression="execution(* org.springaopexamples.target.BankImpl.transfer(..))" id="transferAroundPointcut"/>
+   		<aop:around pointcut-ref="transferAroundPointcut" method="transferTransaction"/>
+   		<aop:pointcut expression="execution(* org.springaopexamples.target.BankImpl.deposit(long,double)) and args(accountno,amount)" id="depositAroundPointcut"/>
+   		<aop:around pointcut-ref="depositAroundPointcut" method="depositTransaction" arg-names="accountno,amount"/>
+   	</aop:aspect>
 
 </beans>
